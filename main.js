@@ -17,7 +17,7 @@ function email_validation(email = prompt("Enter your email please!")) {
     return false;
   }
   else if (splitedEmailArray[0].indexOf('$') != -1 || splitedEmailArray[0].indexOf('%') != -1) {
-    p('Wrong simbols!');
+    p('Wrong symbols!');
     return false;
   }
   else if (domainName.length < 5 || domainName.length > 32) {
