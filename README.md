@@ -1,2 +1,3 @@
 # learning_javascript
-# learning_javascript
+
+email validation example.
