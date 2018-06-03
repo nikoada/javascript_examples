@@ -55,7 +55,10 @@ removeFirstBtn.onclick = function () {
     myUl.removeChild(myUl.firstChild);
     myNewArray.pop();
     calculate();
-}
+  }
+  else {
+    alert('basket is empty');
+  }
 }
 
 removeLastBtn.onclick = function () {
@@ -64,18 +67,25 @@ removeLastBtn.onclick = function () {
     myNewArray.shift();
     calculate();
   }
+  else {
+  alert('basket is empty');
+  }
 }
 
 removeBtn.onclick = function() {
-  for (var i = myNewArray.length -1; i >= 0; i--) {
+  if ( myInput.value.length == 0) {
+    alert('Please write item name to remove from a basket');
+    return;
+  }
+  for (var i = myNewArray.length -1; i > -1; i--) {
+    var flag = true;
     if (myNewArray[i].name.toLowerCase() == myInput.value.toLowerCase()) {
       myNewArray.splice(i, 1)
       myUl.removeChild(myUl.childNodes[i]);
-    }
-    else {
-      alert('Can not find!');
+      flag = false;
     }
   }
+  if (flag) { alert('can not find')}
   calculate();
   myInput.value = '';
 }
@@ -93,7 +103,7 @@ if (myNewArray.length > 0) {
     priceSum += myNewArray[i].price;
   }
 
-  myP.innerHTML = priceSum;
+  myP.innerHTML = "sum of item prices is " + priceSum + "€";
 }
 else {
 myP.innerHTML = 0;
