@@ -1,3 +1,4 @@
-# learning_javascript
+Here is my code of tasks:
 
-email validation example.
+1. Email validation
+2. Shoping list
