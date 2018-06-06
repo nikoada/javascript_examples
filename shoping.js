@@ -34,6 +34,8 @@ myInput.addEventListener("keyup", function(event){
   }
 });
 
+getListLocalStorage("default");
+
 myAddBtn.onclick = function () {
   if (myInput.value.length > 2) {
   myUl.appendChild(document.createElement('li')).innerHTML = myInput.value;
@@ -48,6 +50,8 @@ myAddBtn.onclick = function () {
 else {
   alert('Please write something to add');
 }
+localStorage.clear();
+storingList("default", myNewArray);
 }
 
 removeFirstBtn.onclick = function () {
@@ -109,4 +113,26 @@ else {
 myP.innerHTML = 0;
 alert('basket is empty');
 }
+}
+
+function storingList(address,array) {
+  var objStore = {};
+  for (var i = 0; i < array.length; i++) {
+    objStore[i] = myNewArray[i];
+  }
+  localStorage.setItem(address, JSON.stringify(objStore));
+}
+
+function getListLocalStorage(address) {
+  var localJSON = localStorage.getItem(address);
+  if (localJSON) {
+    var gotList = JSON.parse(localJSON);
+    console.log(Object.keys(gotList).length);
+    var priceSum = 0;
+    for (var i = 0; i < Object.keys(gotList).length; i ++) {
+      myUl.appendChild(document.createElement('li')).innerHTML = gotList[i].name;
+      priceSum += gotList[i].price;
+    }
+    myP.innerHTML = "sum of item prices is " + priceSum + "€";
+  }
 }
