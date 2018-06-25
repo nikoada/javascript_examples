@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.top {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  width: auto;
+  background-color: gray;
+  text-align: center;
+}
+
+.middle {
+  width: auto;
+  height: 70px;
+  background-color: lightgray;
+}
+
+.greenBox {
+  margin: 0, auto;
+  color: white;
+  background-color: lightgreen;
+}
+
+.titleBox {
+}
