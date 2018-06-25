@@ -22,6 +22,11 @@
   color: white;
   background-color: lightgreen;
 }
+.redBox {
+  margin: 0, auto;
+  color: white;
+  background-color: red;
+}
 
 .titleBox {
 }
