@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: monospace;
 }
 
 .top {
@@ -11,22 +12,113 @@
   text-align: center;
 }
 
+.top > * {
+  margin: 0.5rem;
+}
+
 .middle {
+  padding: 0.5rem;
   width: auto;
-  height: 70px;
   background-color: lightgray;
+  border-bottom: solid 1px gray;
+  text-align: center;
 }
 
 .greenBox {
-  margin: 0, auto;
+  max-width: 300px;
+  margin:auto;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
   color: white;
-  background-color: lightgreen;
+  background-color: #80ced6;
+  text-align: left;
 }
 .redBox {
-  margin: 0, auto;
+  max-width: 300px;
+  margin: auto;
   color: white;
-  background-color: red;
+  background-color: #c83349;
+  text-align: left;
+}
+
+h3:first-child {
+  color: black;
+}
+h3:nth-child(2) {
+  float: right;
 }
 
 .titleBox {
+}
+
+.top p, .top h1 {
+  color: white;
+}
+
+h3 {
+  padding: 1rem;
+  display: inline-block;
+}
+
+.InTableDiv {
+  margin-top: 3rem;
+  ;
+  width: 50%;
+  float: left;
+}
+
+.ExTableDiv {
+  margin-top: 3rem;
+  ;
+  width: 50%;
+  float: right;
+}
+
+.InTableDiv table {
+  width: 30rem;
+  float: right;
+  margin-right: 2rem;
+  text-align: left;
+}
+
+.ExTableDiv table {
+  width:  30rem;
+  color: #c83349;
+  margin-left: 2rem;
+  text-align: left;
+}
+
+table tr th, table tr td{
+    padding: 1rem;
+}
+
+input[value="value"] {
+  padding: 0.5rem;
+  width: 4rem;
+}
+
+input[value="description"] {
+  padding: 0.5rem;
+  max-width: 20rem;
+}
+
+select {
+  padding: 0.5rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+td {
+  border: 1px solid lightgray;
+  text-align: justify;
+}
+
+.ExTableDiv table p {
+  float: right;
+}
+
+.InTableDiv table p {
+  float: right;
 }
