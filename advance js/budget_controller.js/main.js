@@ -45,13 +45,26 @@ var UIController = (function() {
 })();
 
 
-var controller = (function() {
+var controller = (function(budgetCtrl, UICtrl) {
 
-  var submitBtnObj = document.getElementById("submitBtn")
-  submitBtnObj.addEventListener("click", function() {
-    budgetController.addIncome(UIController.getInput());
-    UIController.updateUI("+ " + budgetController.actualIncome());
-    UIController.clearField();
-  })
+  var setupEventListerner = function() {
+    var submitBtnObj = document.getElementById("submitBtn")
+    submitBtnObj.addEventListener("click", function() {
+      budgetController.addIncome(UIController.getInput());
+      UIController.updateUI("+ " + budgetController.actualIncome());
+      UIController.clearField();
+    });
+  };
 
-}) ();
+  var updateBudget = function() {};
+
+  return {
+    init : function() {
+      setupEventListerner();
+      //UICtrl.displayBudget();
+    }
+  }
+
+}) (budgetController, UIController);
+
+controller.init();
