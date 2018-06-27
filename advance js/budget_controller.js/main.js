@@ -1,10 +1,13 @@
 var switchBtnObj = document.getElementById("switchBtn");
+switchBtnObj.style.color = "green";
 
 switchBtnObj.addEventListener("click", function() {
   if (switchBtnObj.innerHTML == "+") {
     switchBtnObj.innerHTML = "-";
+    switchBtnObj.style.color = "red";
   } else {
     switchBtnObj.innerHTML = "+";
+    switchBtnObj.style.color = "green";
   }
 });
 
@@ -16,7 +19,13 @@ var budgetController = (function() {
   var income = 0;
 
   return {
-    addIncome : function(value) { income += Number(value) },
+    addIncome : function(value) {
+      if (Number(value)) {
+        income += Number(value);
+      } else {
+        alert("Please enter a number value without comma.");
+      }
+    },
     actualIncome : function() { return income; }
   }
 
