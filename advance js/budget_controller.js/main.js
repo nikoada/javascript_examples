@@ -11,9 +11,6 @@ switchBtnObj.addEventListener("click", function() {
   }
 });
 
-console.log("hello")
-
-
 var budgetController = (function() {
 
   var income = 0;
@@ -36,19 +33,26 @@ var UIController = (function() {
   var incomeDisObj = document.getElementById("income");
   var inputDes = document.getElementById("inputDes");
   var inputVal = document.getElementById("inputVal");
+  var incomeTableObj = document.getElementById('incomeTable');
+  var submitBtnObj = document.getElementById("submitBtn");
 
-  // var DOMStrings = {
-  //   inputType = "add__type";
-  // }
-  //
-  // return {
-  //   getInput : function() {},
-  //   addListItem : function() {};
-  // }
+
+
+  var addRaw = function(inDescroption, inValue) {
+    var trObj = document.createElement('tr');
+    var tdObj = document.createElement('td');
+    var pObj = document.createElement('p');
+    tdObj.innerHTML = inDescroption;
+    pObj.innerHTML = '+' + inValue;
+    incomeTableObj.appendChild(trObj).appendChild(tdObj).appendChild(pObj);
+  };
+
   return {
+    submitBtn : submitBtnObj,
     getInput : function() { return inputVal.value; },
     updateUI : function(value) { incomeDisObj.innerHTML =  value; },
-    clearField : function() { inputVal.value = ""; }
+    clearField : function() { inputVal.value = ""; },
+    addTableRaw : addRaw
   }
 
 })();
@@ -57,15 +61,20 @@ var UIController = (function() {
 var controller = (function(budgetCtrl, UICtrl) {
 
   var setupEventListerner = function() {
-    var submitBtnObj = document.getElementById("submitBtn")
-    submitBtnObj.addEventListener("click", function() {
-      budgetController.addIncome(UIController.getInput());
-      UIController.updateUI("+ " + budgetController.actualIncome());
+
+    UICtrl.submitBtn.addEventListener("click", function() {
+      updateBudget();
+      UICtrl.updateUI("+ " + budgetCtrl.actualIncome());
+      UICtrl.addTableRaw(null,UICtrl.getInput());
+
+      // clears inputfields
       UIController.clearField();
     });
   };
 
-  var updateBudget = function() {};
+  var updateBudget = function() {
+    budgetCtrl.addIncome(UICtrl.getInput());
+  };
 
   return {
     init : function() {
