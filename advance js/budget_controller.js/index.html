@@ -8,18 +8,18 @@
   <body>
     <div class="top" id="top">
       <p>Available Budget in September</p>
-      <h1 class="balance">+ 2,055.60</h1>
+      <h1 class="balance" id="balance">0</h1>
       <div class="greenBox">
         <h3>INCOME</h3>
         <h3 id="income">0</h3>
       </div>
       <div class="redBox">
         <h3>EXPENSES</h3>
-        <h3>- 560.00</h3>
+        <h3 id="expenses">0</h3>
       </div>
     </div>
     <div class="middle">
-      <button id="switchBtn" type="button" name="button">+</button>
+      <button id="switchBtn" type="button" name="button" style="color: green;">+</button>
       <input id="inputDes" type="text" name="description" placeholder="Add description">
       <input id="inputVal" type="text" name="value" placeholder="Value">
       <button id="submitBtn" type="button" name="button">✓</button>
@@ -30,27 +30,12 @@
           <tr>
             <th>INCOME</th>
           </tr>
-          <tr>
-            <td>Maker fair project <p>+1,454.00</p></td>
-          </tr>
-          <tr>
-            <td>Micropython <p>+1,244.00</p></td>
-          </tr>
         </table>
       </div>
       <div class="ExTableDiv">
         <table id="expensesTable">
           <tr>
             <th>EXPENSES</th>
-          </tr>
-          <tr>
-            <td>Website project <p>+4,564.00</p></td>
-          </tr>
-          <tr>
-            <td>DCI project <p>+564.00</p></td>
-          </tr>
-          <tr>
-            <td>IoT<p>+764.00</p></td>
           </tr>
         </table>
       </div>
