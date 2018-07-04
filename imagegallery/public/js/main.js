@@ -1,3 +1,4 @@
+// User Interface
 var UIController = (function() {
 
   var DOMObj = {
@@ -11,15 +12,12 @@ var UIController = (function() {
 
 })();
 
-var gobalController = (function(UICtrl) {
+
+// Global
+var globalController = (function(UICtrl) {
 
 var setUploadButton = UIController.DOMObj.uploadBtnObj.addEventListener("click", function() {
-  if (UICtrl.DOMObj.formObj.style.display === "none") {
-    UICtrl.DOMObj.formObj.style.display = "block";
-  } else {
-    UICtrl.DOMObj.formObj.style.display = "none";
-  }
-  console.log("jap " + UICtrl.DOMObj.formObj.style)
+  UICtrl.DOMObj.formObj.classList.toggle("invisible");
 })
 
 return {
@@ -28,4 +26,5 @@ return {
 
 })(UIController);
 
-gobalController.init;
+
+globalController.init;
