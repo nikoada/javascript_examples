@@ -1,0 +1,17 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.p-2 img {
+  max-width: 200px;
+}
+
+.add_padding {
+  padding: 2rem;
+}
+
+.invisible {
+  display: none;
+}
