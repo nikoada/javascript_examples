@@ -17,22 +17,19 @@
   <button id="uploadBtn" type="button" class="btn btn-success float-right">Upload image</button>
 </nav>
   <div class="container">
-    <div class="invisible text-center add_padding" id="form">
+    <div class="invisible text-center add-padding" id="form">
       <form
             ref='uploadForm'
             id='uploadForm'
             action='/upload'
             method='post'
             encType="multipart/form-data">
-            <input type="file" name="sampleFile" />
-            <input type="text" name="tags" value="foobar" />
-            <input type='submit' value='Upload!' />
+            <input id="file-select" type="file" name="sampleFile" />
+            <input id="tags" type="text" name="tags" value="foobar" />
+            <input id="submituploadBtn" type='submit' value='Upload!' />
       </form>
     </div>
-    <div class="d-flex flex-row justify-content-center flex-wrap">
-      <div class="p-2"><img src="/images/GCXwGkBtd9PULrp0Qz7Q.jpg" class="rounded" alt="..."></div>
-      <div class="p-2"><img src="/images/GS2bAbhTUalVrQfcQKNb.png" class="rounded" alt="..."></div>
-      <div class="p-2"><img src="/images/h5IRNdPUDvHP1cCt5FUT.JPG" class="rounded" alt="..."></div>
+    <div id="flex_container" class="d-flex flex-row justify-content-center flex-wrap">
     </div>
   </div>
   <script src="js/main.js"></script>

@@ -4,11 +4,18 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* body {
+  background: url(../images/book-shelf.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
 .p-2 img {
   max-width: 12rem;
 }
 
-.add_padding {
+.add-padding {
   padding: 2rem;
 }
 
