@@ -4,6 +4,7 @@ var UIController = (function() {
   var DOMObj = {
     uploadBtnObj : document.getElementById('uploadBtn'),
     formObj : document.getElementById('form'),
+<<<<<<< HEAD
     uploadFormObj : document.getElementById('uploadForm'),
     fileSelectObj : document.getElementById('file-select'),
     tagsObj : document.getElementById('tags'),
@@ -12,6 +13,11 @@ var UIController = (function() {
     imgTagObj : document.getElementsByTagName('IMG')
   };
 
+
+=======
+    flexContainerObj : document.getElementById('flex_container')
+  }
+>>>>>>> 6b3702a84164116b68340dcab69352694b6f02b4
 
 
   return {
@@ -24,6 +30,7 @@ var UIController = (function() {
 // Global
 var globalController = (function(UICtrl) {
 
+<<<<<<< HEAD
   // get JSON from server
   var getData = function(cb) {
     var xhr = new XMLHttpRequest();
@@ -58,6 +65,17 @@ var globalController = (function(UICtrl) {
     });
   }
 
+=======
+var setUploadButton = UICtrl.DOMObj.uploadBtnObj.addEventListener("click", function() {
+  UICtrl.DOMObj.formObj.classList.toggle("invisible");
+  UICtrl.DOMObj.flexContainerObj.classList.toggle("invisible");
+  if (UICtrl.DOMObj.uploadBtnObj.innerHTML === "Upload image") {
+    UICtrl.DOMObj.uploadBtnObj.innerHTML = "Back to the gallery";
+  } else {
+    UICtrl.DOMObj.uploadBtnObj.innerHTML = "Upload image";
+  }
+})
+>>>>>>> 6b3702a84164116b68340dcab69352694b6f02b4
 
   var setUploadButton = UICtrl.DOMObj.uploadBtnObj.addEventListener("click", function() {
     UICtrl.DOMObj.formObj.classList.toggle("invisible");
