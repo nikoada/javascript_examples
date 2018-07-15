@@ -8,8 +8,10 @@ var UIController = (function() {
     fileSelectObj : document.getElementById('file-select'),
     tagsObj : document.getElementById('tags'),
     submitBtnObj : document.getElementById('submit&uploadBtn'),
-    flexContainerObj : document.getElementById('flex_container')
-  }
+    flexContainerObj : document.getElementById('flex_container'),
+    imgTagObj : document.getElementsByTagName('IMG')
+  };
+
 
 
   return {
@@ -50,6 +52,7 @@ var globalController = (function(UICtrl) {
         var imgObj = document.createElement('img');
         imgObj.classList.add('rounded');
         imgObj.src = "http://localhost:3000/images/" + dataObj.images[i].image;
+        imgObj.setAttribute('data-id',i);
         divObj.appendChild(imgObj);
       }
     });
@@ -79,3 +82,10 @@ var globalController = (function(UICtrl) {
 globalController.getImagesFromServer;
 globalController.init;
 globalController.setSubmit;
+
+document.querySelector('.rounded').addEventListener('click',testClick);
+
+testClick = function (event) {
+  alert("hi");
+
+};
