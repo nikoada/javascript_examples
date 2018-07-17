@@ -20,9 +20,10 @@ $(document).ready( function() {
   });
 
   $('a').click( function(e) {
-    e.preventDefault();
-    if ($(this).attr('href') == 'evil') {
+
+    if ($(this).attr('href') == 'https://evil.com') {
       alert('thats it');
+      e.preventDefault();
     }
   });
 
