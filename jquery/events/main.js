@@ -22,7 +22,7 @@ $(document).ready( function() {
   $('a').click( function(e) {
 
     if ($(this).attr('href') == 'https://evil.com') {
-      alert('thats it');
+      alert('Blocked');
       e.preventDefault();
     }
   });

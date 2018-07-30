@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+  margin: 12rem;
+}
+
+.header {
+  background-color: red;
+}
+
+input{
+  width: 80%;
+  margin: 1rem;
+}
+
+span {
+  color: white;
+  width: 20%;
+}
+
+ul {
+  text-align: left;
+}
