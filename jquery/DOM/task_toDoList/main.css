@@ -13,10 +13,18 @@ input{
 }
 
 span {
-  color: white;
+  color: black;
   width: 20%;
 }
 
 ul {
   text-align: left;
+}
+
+.close {
+  float: right;
+}
+
+.select {
+  background-color: lightgray;
 }
