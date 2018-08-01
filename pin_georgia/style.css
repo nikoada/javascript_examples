@@ -1,0 +1,29 @@
+* {
+  margin: 1rem;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px red none; */
+}
+
+
+.plan-your-tour {
+  margin: auto;
+  max-width: 500px;
+}
+
+select {
+  float: right;
+}
+
+input {
+
+}
+
+.plan-your-tour div {
+  background-color: #66CDAA;
+}
+
+.output {
+  font-weight: 600;
+  text-align: right;
+}
