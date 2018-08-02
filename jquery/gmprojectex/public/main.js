@@ -1,7 +1,11 @@
+
+
 var locaArr = {};
 
 var map;
 var zoom = 7;
+var gotObj;
+
 function initMap(){
   let startPosition = { lat: -34.397, lng: 150.644 };
   map = new google.maps.Map(document.getElementById('map'),
@@ -41,6 +45,8 @@ $('.addBtn').click(function(){
         locaArr[locName] = marker ;
         $('#select').prepend("<option>"+ locName + "</option>")
         $("#select").val(locName)
+
+				postLoc(lat,lng,locName, marker);
       }
       else {
         alert('Invalid or double entry!')
@@ -81,6 +87,71 @@ function centerMap(){
   map.setCenter(locaArr[$("#select option:selected").val()].position);
 };
 
+function postLoc(lat, lng, locName, marker){
+	$.ajax({
+        url: 'http://localhost:3000/location',
+        type: 'POST',
+        data: JSON.stringify(
+            {
+                lat: lat,
+                lng : lng,
+                title: locName,
+            }
+        ),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(response) {
+            console.log('response ' + response);
+        },
+        error: function(xhr, status, error) {
+            console.log(`
+                error: ${error},
+                status: ${status},
+                xhr: ${JSON.stringify(xhr)}
+            `);
+        }
+    });
+}
+
+$(document).ready(function(){
+
+	function getLoc(){
+
+
+		$.ajax({
+	            url: 'http://localhost:3000/location',
+	            type: 'GET',
+	            dataType: 'json',
+	            success: function(response) {
+	                console.log(response);
+									gotObj = response.locations;
+									putLoc();
+	                }
+	            });
+
+	}
+
+	function putLoc(){
+		$.each(gotObj, function(index, value){
+			$.each(gotObj[index], function(key, value){
+				var marker = new google.maps.Marker({
+					position: {
+						lat: gotObj[index].lat,
+						lng: gotObj[index].lng
+					},
+					map: map,
+					title: gotObj[index].title
+				});
+
+			})
+			$('#select').prepend("<option>"+ gotObj[index].title + "</option>")
+		})
+	}
+
+	getLoc();
+
+
+})
 
 // to do list:
 //
