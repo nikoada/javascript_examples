@@ -1,13 +1,11 @@
 
-
-var locaArr = {};
-
 var map;
 var zoom = 7;
 var gotObj;
 
 function initMap(){
-  let startPosition = { lat: -34.397, lng: 150.644 };
+
+  let startPosition = { lat: 52.52000659999999, lng: 13.404953999999975 };
   map = new google.maps.Map(document.getElementById('map'),
   { center: startPosition, zoom: zoom });
 }
@@ -19,8 +17,8 @@ $('.addBtn').click(function(){
   var geocoder = new google.maps.Geocoder();
   var doubleEntry = false;
 
-  $.each(locaArr, function(key, value) {
-    if (key.toLowerCase() === locName.toLowerCase()){
+  $.each(gotObj, function(index, value) {
+    if (gotObj[index].title.toLowerCase() == locName.toLowerCase()){
       doubleEntry = true;
     };
   });
@@ -41,12 +39,15 @@ $('.addBtn').click(function(){
 
         map.setCenter({lat: lat, lng: lng});
 
-        // locaArr.push($('input').val());
-        locaArr[locName] = marker ;
         $('#select').prepend("<option>"+ locName + "</option>")
         $("#select").val(locName)
 
-				postLoc(lat,lng,locName, marker);
+				postLoc(lat,lng,locName);
+        gotObj.push({
+          lat: lat,
+          lng: lng,
+          title: locName
+        })
       }
       else {
         alert('Invalid or double entry!')
@@ -66,8 +67,12 @@ $('.zoomOutBtn').click(function(){
 });
 
 $('.remove').click(function(){
-  if (Object.keys(locaArr).length > 0){
+  if (Object.keys(gotObj).length > 0){
 
+    $.each(gotObj, function(index, value){
+      if (gotObj[index].title === $("#select option:selected").val())
+
+    })
     locaArr[$("#select option:selected").val()].setMap(null);
     delete locaArr[$("#select option:selected").val()];
     $("#select option:selected").remove();
@@ -84,10 +89,17 @@ $('select').change(function() {
 });
 
 function centerMap(){
-  map.setCenter(locaArr[$("#select option:selected").val()].position);
+
+  $.each(gotObj, function(index, value){
+    if (gotObj[index].title == $("#select option:selected").val()){
+      map.setCenter({lat: gotObj[index].lat, lng: gotObj[index].lng});
+    }
+  })
+
+  // map.setCenter(locaArr[$("#select option:selected").val()].position);
 };
 
-function postLoc(lat, lng, locName, marker){
+function postLoc(lat, lng, locName){
 	$.ajax({
         url: 'http://localhost:3000/location',
         type: 'POST',
@@ -113,7 +125,7 @@ function postLoc(lat, lng, locName, marker){
     });
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 	function getLoc(){
 
@@ -125,13 +137,14 @@ $(document).ready(function(){
 	            success: function(response) {
 	                console.log(response);
 									gotObj = response.locations;
-									putLoc();
 	                }
 	            });
 
 	}
 
-	function putLoc(){
+
+
+  function putLoc(){
 		$.each(gotObj, function(index, value){
 			$.each(gotObj[index], function(key, value){
 				var marker = new google.maps.Marker({
@@ -146,12 +159,19 @@ $(document).ready(function(){
 			})
 			$('#select').prepend("<option>"+ gotObj[index].title + "</option>")
 		})
+
 	}
 
-	getLoc();
+    getLoc();
+
+  // });
 
 
-})
+
+
+
+
+
 
 // to do list:
 //
